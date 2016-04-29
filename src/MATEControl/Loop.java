@@ -16,13 +16,19 @@ public class Loop {
     public static void main(){
         new Thread(){
             public void run(){
-                Math.math();
-                
-                try {
-                    Thread.sleep(Main.arduino.getLoopRate());
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Loop.class.getName()).log(Level.SEVERE, null, ex);
+                while(true){
+                    Math.math();
+                    //System.out.println(MATE.joystick.getX());
+                    if(MATE.arduino.isConnected()){
+                        //MATE.log.write(MATE.arduino.getOutput());
+                    }
+                    try {
+                        Thread.sleep(MATE.arduino.getLoopRate());
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Loop.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                
             }
         }.start();
     }
