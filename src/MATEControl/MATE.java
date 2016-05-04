@@ -5,6 +5,7 @@ import robot.devices.Arduino;
 import robot.devices.Joystick;
 import robot.util.Log;
 import robot.write.Motor;
+import robot.write.Servo;
 
 public class MATE 
 {
@@ -18,6 +19,8 @@ public class MATE
     public static Motor motorRight;
     public static Motor motorHorizontal;
     public static Motor motorElevation;
+    
+    public static Servo servoClaw;
     
     public static void main(String[] args) 
     {       
@@ -39,6 +42,8 @@ public class MATE
         log.write("Joystick and Arduino done");
         
         //motors
+        log.write("Creating Motors and Servos");
+        
         double scale = .95;
         
         motorLeft  = new Motor("Left", 2, arduino);
@@ -47,11 +52,13 @@ public class MATE
         motorRight = new Motor("Right", 3, arduino);
         motorRight.scaleValue(scale);
         
-        motorHorizontal = new Motor("Horizontal", 4, arduino);
+        motorHorizontal = new Motor("Horizontal", 5, arduino);
         motorHorizontal.scaleValue(scale);
         
-        motorElevation = new Motor("Elevation", 5, arduino);
+        motorElevation = new Motor("Elevation", 4, arduino);
         motorElevation.scaleValue(scale);
+        
+        servoClaw = new Servo("Claw", 6, arduino);
         
         log.write("Setup complete");
         

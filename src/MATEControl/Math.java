@@ -38,16 +38,21 @@ public class Math {
         MATE.motorRight.setValueAxisValue(-x + r);
         
         //elevation
-        if(MATE.joystick.getButton(2)){ //down
+        if(MATE.joystick.getButton(3)) //down
             e = -1f;
-        } else if(MATE.joystick.getButton(3)){//up
-            e = 1f;
-        }
+        else if(MATE.joystick.getButton(2)) //up
+            e = 1f;  
+        else 
+            e = 0;
+        
         MATE.motorElevation.setValueAxisValue(e);
         
-        
-        
-        
+        //claw
+        if(MATE.joystick.getButton(4)){ //left
+            MATE.servoClaw.subDegree(2);
+        }
+        if(MATE.joystick.getButton(5)){ //right
+            MATE.servoClaw.addDegree(2);
+        }  
     }
-    
 }
