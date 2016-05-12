@@ -5,6 +5,7 @@ import static MATEControl.MATE.joystick;
 public class Math {
     
     public static float x, y, e, r, s;
+    public static int clawValue = 90;
     
     public static void math(){
         x = joystick.getX();
@@ -13,6 +14,7 @@ public class Math {
         s = joystick.getSlider();
         
         //turn te joystick square into a diamond
+        /*
         if(((x + y > 1)||(x + y < -1))||((x - y < -1)||(-x + y < -1))){
             if(y > 0){
                 if(x > 0)
@@ -26,16 +28,17 @@ public class Math {
                     y = -1 + -x;
             }
         }
-        
+        */
         x *= s;
         y *= s;
+        r *= s;
         
         //horizontal
         MATE.motorHorizontal.setValueAxisValue(x);
         
         //tank drive
-        MATE.motorLeft.setValueAxisValue(x + r);
-        MATE.motorRight.setValueAxisValue(-x + r);
+        MATE.motorLeft.setValueAxisValue((r + y)/2f);
+        MATE.motorRight.setValueAxisValue((-r + y)/2f);
         
         //elevation
         if(MATE.joystick.getButton(3)) //down
@@ -48,11 +51,28 @@ public class Math {
         MATE.motorElevation.setValueAxisValue(e);
         
         //claw
+        
         if(MATE.joystick.getButton(4)){ //left
-            MATE.servoClaw.subDegree(2);
+            addClaw(-4);
         }
         if(MATE.joystick.getButton(5)){ //right
-            MATE.servoClaw.addDegree(2);
-        }  
+            addClaw(4);
+        }
+        double claw = clawValue;
+       
+        claw /= 180;
+        
+        claw *= 140;
+        claw += 20;
+        if(claw == 160) claw--;
+        MATE.servoClaw.setValue((int) claw);
+
+        //MATE.servoClaw.setValue(20);
+    }
+    
+    private static void addClaw(int i){
+        clawValue += i;
+        if(clawValue > 180) clawValue = 180;
+        if(clawValue < 0) clawValue = 0;
     }
 }

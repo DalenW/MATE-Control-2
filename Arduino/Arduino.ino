@@ -25,6 +25,7 @@ void loop() {
       s[1].write(v[1] * 0.8); //right
       s[2].write(v[2] * 0.8); //horizontal
       s[3].write(v[3] * 0.8); //verticle
+      s[4].write(v[4]); //claw
     }
     //writeSensors();
   }

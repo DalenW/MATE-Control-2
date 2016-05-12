@@ -18,7 +18,7 @@ public class Loop {
             public void run(){
                 while(true){
                     Math.math();
-                    System.out.println(MATE.joystick.getRotation());
+                    System.out.println(MATE.servoClaw.getValue());
                     if(MATE.arduino.isConnected()){
                         //MATE.log.write(MATE.arduino.getOutput());
                     }

@@ -1,4 +1,4 @@
-package MATEControl;
+ package MATEControl;
 
 import com.ward.Console;
 import robot.devices.Arduino;
@@ -52,18 +52,17 @@ public class MATE
         motorRight = new Motor("Right", 3, arduino);
         motorRight.scaleValue(scale);
         
-        motorHorizontal = new Motor("Horizontal", 5, arduino);
+        motorHorizontal = new Motor("Horizontal", 4, arduino);
         motorHorizontal.scaleValue(scale);
         
-        motorElevation = new Motor("Elevation", 4, arduino);
+        motorElevation = new Motor("Elevation", 5 , arduino);
         motorElevation.scaleValue(scale);
         
         servoClaw = new Servo("Claw", 6, arduino);
-        
+         
         log.write("Setup complete");
         
         log.write("Starting loop");
         Loop.main();
     }
-
 }
