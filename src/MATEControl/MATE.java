@@ -52,10 +52,10 @@ public class MATE
         motorRight = new Motor("Right", 3, arduino);
         motorRight.scaleValue(scale);
         
-        motorHorizontal = new Motor("Horizontal", 4, arduino);
+        motorHorizontal = new Motor("Horizontal", 5, arduino);
         motorHorizontal.scaleValue(scale);
         
-        motorElevation = new Motor("Elevation", 5 , arduino);
+        motorElevation = new Motor("Elevation", 4, arduino);
         motorElevation.scaleValue(scale);
         
         servoClaw = new Servo("Claw", 6, arduino);
